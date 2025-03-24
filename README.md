@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# 🚗 Carshop Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and user-friendly React frontend for managing car inventory, built with **Vite**, **Material UI**, **AG Grid**, and **React Query**. This frontend connects to an existing REST API for full CRUD functionality.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View, search, and sort cars
+- Add new cars
+- Edit existing car details
+- Delete cars from the list
+- Fully responsive design using Material UI
+- Fast performance with Vite
+- Efficient networking with React Query
 
-## Expanding the ESLint configuration
+## 🔗 REST API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This app uses the following REST API. Special thanks to Juha Hinkula - my teacher.  
+[API Documentation](https://juhahinkula.github.io/carshopdocs/)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tech Stack
+
+| Technology   | Purpose                   |
+| ------------ | ------------------------- |
+| React + Vite | Fast frontend setup       |
+| TypeScript   | Type safety               |
+| Material UI  | UI components and styling |
+| AG Grid      | Advanced table features   |
+| React Query  | Data fetching and caching |
+
+## 🚀 Getting Started
+
+### 1.  Clone the repo
+
+```bash
+git clone https://github.com/your-username/carshop-frontend.git
+cd carshop-frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies & start server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+npm run dev
+Open browser, visit the stated localhost.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```
+
+### 📁 Folder Structure (will change)
+
+```bash
+src/
+├── components/         # React components
+├── api/                # API functions
+├── types/              # TypeScript interfaces and types
+├── App.tsx             # Root component
+└── main.tsx            # Entry point
 ```
