@@ -11,12 +11,15 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import AddCar from "./AddCar";
 import { Car } from "../types";
+import EditCar from "./EditCar";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 export default function CarList() {
   const [cars, setCars] = useState<Car[]>([]);
   const [open, setOpen] = useState(false);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
 
   const [columnDefs] = useState<ColDef<Car>[]>([
     { field: "brand", filter: true, width: 100 },
@@ -26,11 +29,24 @@ export default function CarList() {
     { field: "modelYear", filter: true, width: 120 },
     { field: "price", filter: true, width: 150 },
     {
-      width: 120,
+      width: 200,
       cellRenderer: (params: ICellRendererParams) => (
-        <Button size="small" color="error" onClick={() => handleDelete(params)}>
-          Delete
-        </Button>
+        <div style={{ display: "flex", gap: "0.5rem" }}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => handleEdit(params)}
+          >
+            Edit
+          </Button>
+          <Button
+            size="small"
+            color="error"
+            onClick={() => handleDelete(params)}
+          >
+            Delete
+          </Button>
+        </div>
       ),
     },
   ]);
@@ -48,6 +64,11 @@ export default function CarList() {
       })
       .then((data) => setCars(data._embedded.cars))
       .catch((err) => console.error(err));
+  };
+  const handleEdit = (params: ICellRendererParams) => {
+    const carToEdit = params.data as Car;
+    setSelectedCar(carToEdit);
+    setEditDialogOpen(true);
   };
 
   const handleDelete = (params: ICellRendererParams) => {
@@ -78,6 +99,15 @@ export default function CarList() {
           theme={themeMaterial}
         />
       </div>
+      <EditCar
+        open={editDialogOpen}
+        car={selectedCar}
+        onClose={() => setEditDialogOpen(false)}
+        onSave={() => {
+          setEditDialogOpen(false);
+          fetchCars();
+        }}
+      />
       <Snackbar
         open={open}
         autoHideDuration={3000}
