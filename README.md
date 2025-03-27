@@ -50,7 +50,6 @@ Open browser, visit the stated localhost.
 ```bash
 src/
 ├── components/         # React components
-├── api/                # API functions
 ├── types/              # TypeScript interfaces and types
 ├── App.tsx             # Root component
 └── main.tsx            # Entry point
