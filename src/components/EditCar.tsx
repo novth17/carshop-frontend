@@ -8,10 +8,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Car } from "../types";
 
 type EditCarProps = {
-  open: boolean;
-  car: Car | null;
-  onClose: () => void;
-  onSave: () => void;
+  open: boolean; // whether the dialog is open or closed
+  car: Car | null; //  car object that you want to edit.
+  onClose: () => void; //close when cxl or outside box
+  onSave: () => void; //success PUT request
 };
 
 export default function EditCar({ open, car, onClose, onSave }: EditCarProps) {
